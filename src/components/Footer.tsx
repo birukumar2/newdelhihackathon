@@ -2,88 +2,79 @@ import { Shield, Github, Twitter, Linkedin } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-800 text-white mt-16">
+    <footer className="bg-gray-950 border-t border-gray-800/60 text-white mt-0">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Shield className="w-8 h-8 text-blue-400" />
-              <span className="text-xl font-bold">SkillChain</span>
+              <div className="bg-gradient-to-br from-cyan-500 to-purple-600 p-1.5 rounded-lg">
+                <Shield className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-xl font-bold text-white">SkillChain</span>
             </div>
-            <p className="text-gray-400 text-sm">
-              Blockchain-powered certificate verification platform built on Polygon network.
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Blockchain-powered certificate verification platform built on Polygon. Fighting
+              credential fraud one SBT at a time.
             </p>
           </div>
 
+          {/* Platform */}
           <div>
-            <h3 className="font-bold mb-4">Platform</h3>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Verify Certificate
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Issue Certificate
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  API Documentation
-                </a>
-              </li>
+            <h3 className="font-bold mb-4 text-gray-200">Platform</h3>
+            <ul className="space-y-2 text-sm text-gray-500">
+              {['Verify Certificate', 'Issue Certificate', 'API Documentation'].map((item) => (
+                <li key={item}>
+                  <a href="#" className="hover:text-cyan-400 transition-colors">
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
+          {/* Resources */}
           <div>
-            <h3 className="font-bold mb-4">Resources</h3>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Documentation
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Help Center
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors">
-                  Privacy Policy
-                </a>
-              </li>
+            <h3 className="font-bold mb-4 text-gray-200">Resources</h3>
+            <ul className="space-y-2 text-sm text-gray-500">
+              {['Documentation', 'Help Center', 'Privacy Policy'].map((item) => (
+                <li key={item}>
+                  <a href="#" className="hover:text-cyan-400 transition-colors">
+                    {item}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
+          {/* Connect */}
           <div>
-            <h3 className="font-bold mb-4">Connect</h3>
-            <div className="flex gap-4">
-              <a
-                href="#"
-                className="bg-gray-700 p-2 rounded-lg hover:bg-gray-600 transition-colors"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="bg-gray-700 p-2 rounded-lg hover:bg-gray-600 transition-colors"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="bg-gray-700 p-2 rounded-lg hover:bg-gray-600 transition-colors"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
+            <h3 className="font-bold mb-4 text-gray-200">Connect</h3>
+            <div className="flex gap-3">
+              {[
+                { icon: Github, href: 'https://github.com/mediokart/skillchain', color: 'hover:text-white' },
+                { icon: Twitter, href: '#', color: 'hover:text-sky-400' },
+                { icon: Linkedin, href: '#', color: 'hover:text-blue-400' },
+              ].map(({ icon: Icon, href, color }) => (
+                <a
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`bg-gray-800 border border-gray-700/60 p-2 rounded-lg text-gray-400 ${color} hover:border-gray-500 transition-all duration-200`}
+                >
+                  <Icon className="w-5 h-5" />
+                </a>
+              ))}
             </div>
+            <p className="text-gray-600 text-xs mt-4">
+              🏆 HackIndia Spark 6 · NIT Delhi 2026
+            </p>
           </div>
         </div>
 
-        <div className="border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
-          <p>&copy; 2026 SkillChain. All rights reserved. Built with Polygon blockchain technology.</p>
+        <div className="border-t border-gray-800/60 pt-6 text-center text-xs text-gray-600">
+          <p>© 2026 SkillChain by Team Mediokart (GEC Buxar). All rights reserved. Built on Polygon blockchain.</p>
         </div>
       </div>
     </footer>

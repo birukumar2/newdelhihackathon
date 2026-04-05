@@ -19,48 +19,40 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-gradient-to-r from-blue-600 to-cyan-500 text-white shadow-lg">
-      <div className="container mx-auto px-4 py-6">
+    <header className="bg-gray-950/90 backdrop-blur-md border-b border-gray-800/60 sticky top-0 z-50 shadow-lg shadow-black/30">
+      <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className="bg-white p-3 rounded-lg shadow-md">
-              <img
-                src="/Screenshot_2026-04-05_at_5.03.41_PM.png"
-                alt="SkillChain Logo"
-                className="h-12 w-auto"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
-                }}
-              />
-              <div className="hidden flex items-center gap-2">
-                <Shield className="w-8 h-8 text-blue-600" />
-                <span className="text-blue-600 font-bold text-xl">SkillChain</span>
-              </div>
+          {/* Logo */}
+          <div className="flex items-center gap-3">
+            <div className="bg-gradient-to-br from-cyan-500 to-purple-600 p-2 rounded-lg shadow-md shadow-cyan-500/20">
+              <Shield className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold">SkillChain</h1>
-              <p className="text-blue-100 text-sm">Blockchain Certificate Verification</p>
+              <h1 className="text-xl font-extrabold text-white leading-none">SkillChain</h1>
+              <p className="text-xs text-gray-400 leading-none mt-0.5">Blockchain Certificate Verification</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-lg">
-              <Link2 className="w-5 h-5" />
-              <span className="text-sm font-semibold">Polygon Network</span>
+          {/* Right */}
+          <div className="flex items-center gap-3">
+            <div className="hidden sm:flex items-center gap-2 bg-gray-800/60 border border-gray-700/60 px-3 py-1.5 rounded-lg">
+              <Link2 className="w-4 h-4 text-purple-400" />
+              <span className="text-sm text-gray-300 font-medium">Polygon Network</span>
+              <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
             </div>
 
             {walletAddress ? (
-              <div className="bg-white/20 px-4 py-2 rounded-lg">
-                <p className="text-sm font-semibold">
+              <div className="bg-gray-800 border border-cyan-500/40 px-4 py-1.5 rounded-lg">
+                <p className="text-sm font-mono text-cyan-400">
                   {walletAddress.slice(0, 6)}...{walletAddress.slice(-4)}
                 </p>
               </div>
             ) : (
               <button
+                id="connect-wallet-btn"
                 onClick={handleConnectWallet}
                 disabled={connecting}
-                className="bg-white text-blue-600 px-6 py-2 rounded-lg font-semibold hover:bg-blue-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="bg-gradient-to-r from-cyan-500 to-purple-600 text-white px-5 py-2 rounded-lg font-semibold hover:from-cyan-400 hover:to-purple-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 shadow-md hover:shadow-cyan-500/25 text-sm"
               >
                 {connecting ? 'Connecting...' : 'Connect Wallet'}
               </button>
